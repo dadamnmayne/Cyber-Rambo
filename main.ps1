@@ -10,5 +10,5 @@ function getFileDeletionEventLogs {
         #Event ID 4656: A handle to an object was requested.
         $_.eventid -eq "4656"
     
-        }
+    }
 }
