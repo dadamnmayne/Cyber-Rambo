@@ -1,4 +1,5 @@
 function getFileDeletionEventLogs {
+
     get-eventlog security | ? {
 
         #Event ID 4663: An attempt was made to access an object
@@ -12,3 +13,35 @@ function getFileDeletionEventLogs {
     
     }
 }
+
+function getRemoteLoginEventLogs {
+
+    get-eventlog security | ? {
+
+        #Event ID 4624: An account was successfully logged on.
+        $_.eventid -eq "4624" -and 
+        
+        #Logon Type 3: Network/Remote Logon.
+        $_.message -like "*Logon Type:		3*"
+    
+    }
+}
+
+function searchForInterestingFiles {
+
+    gci c:\ -recurse | ? {
+        
+        #Indication of files gathered and compressed
+        $_.extension -eq ".zip" -or
+        $_.extension -eq ".7s" -or
+
+        #Files that may contain sensitive information
+        $_.extension -eq ".doc" -or
+        $_.extension -eq ".xlsx" -or
+        $_.extension -eq ".xls" -or
+        $_.extension -eq ".ppt"
+        
+        }
+
+}
+
