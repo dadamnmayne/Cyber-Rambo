@@ -14,6 +14,10 @@ function getFileDeletionEventLogs {
     }
 }
 
+
+
+
+
 function getRemoteLoginEventLogs {
 
     get-eventlog security | ? {
@@ -26,6 +30,10 @@ function getRemoteLoginEventLogs {
     
     }
 }
+
+
+
+
 
 function searchForInterestingFiles {
 
@@ -44,6 +52,10 @@ function searchForInterestingFiles {
     }
 }
 
+
+
+
+
 function winEventLogEvidenceOfPSEXEC {
 
     get-eventlog security | ? { 
@@ -53,5 +65,89 @@ function winEventLogEvidenceOfPSEXEC {
         $_.message -like "*psexec*"
     
     }
+}
+
+
+
+
+
+function scheduledTasksActivity {
+
+    get-eventlog security | ? {
+        $_.eventid -eq "4698" -or
+        $_.eventid -eq "4699" -or
+        $_.eventid -eq "4700" -or
+        $_.eventid -eq "4701" -or
+        $_.eventid -eq "4702"
+
+    }
+}
+
+
+
+
+
+function servicesActivity {
+
+    get-eventlog security | ? {
+        $_.eventid -eq "4075" -or
+        $_.eventid -eq "4070" 
+    }
+}
+
+
+
+
+
+function shareActivity {
+    get-eventlog security | ? {
+        $_.eventid -eq "5140" 
+    }
+}
+
+
+
+
+
+function generalHuntSurvey {
+    #Processes
+    Get-WmiObject -class win32_process
     
+    #Services
+    get-service
+    
+    #Scheduled Tasks
+    get-scheduledtask
+    
+    #Local Users
+    get-localgroupmember -name users
+    
+    #Net TCP Connections
+    get-nettcpconnection
+    
+    #Autoruns
+}
+
+
+
+
+
+function evidenceOfFileCreation {
+    get-eventlog security | ? {
+        #New Files Created
+        $_.eventid -eq "4663"
+}
+
+
+
+
+
+function baselineOfCriticalDirectories {
+    gci c:\users\*\appdata -recurse
+    gci 'C:\Program Files' -recurse
+    gci 'C:\Program Files (x86)' -recurse
+    gci C:\ProgramData -recurse
+    gci c:\windows -recurse
+    gci c:\windows\system -recurse
+    gci c:\windows\system32 -recurse
 }
