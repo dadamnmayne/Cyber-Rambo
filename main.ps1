@@ -41,7 +41,17 @@ function searchForInterestingFiles {
         $_.extension -eq ".xls" -or
         $_.extension -eq ".ppt"
         
-        }
-
+    }
 }
 
+function winEventLogEvidenceOfPSEXEC {
+
+    get-eventlog security | ? { 
+        
+        #Event ID 4688: A new process has been created.
+        $_.eventid -eq "4688" -and 
+        $_.message -like "*psexec*"
+    
+    }
+    
+}
