@@ -151,3 +151,7 @@ function baselineOfCriticalDirectories {
     gci c:\windows\system -recurse
     gci c:\windows\system32 -recurse
 }
+
+function pathAndCommandLineOfProcesses {
+    get-wmiobject win32_process | select processname, path, commandline | sort path
+}
