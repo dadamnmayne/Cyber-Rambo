@@ -24,7 +24,7 @@ function getRemoteLoginEventLogs {
 
         #Event ID 4624: An account was successfully logged on.
         $_.eventid -eq "4624" -and 
-        
+        e
         #Logon Type 3: Network/Remote Logon.
         $_.message -like "*Logon Type:		3*"
     
