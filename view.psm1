@@ -5,3 +5,9 @@ function mainMenu {
     Write-Host "3. View locations and commands of Common Processes"
     $choice = Read-Host " "
 }
+
+function timeRangeMenu {
+    clear
+    Write-Host "Enter Start time of range. For Example: 9:00AM"
+    $start = Read-Host " "
+}
