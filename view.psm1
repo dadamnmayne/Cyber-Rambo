@@ -8,6 +8,27 @@ function mainMenu {
 
 function timeRangeMenu {
     clear
-    Write-Host "Enter Start time of range. For Example: 9:00AM"
-    $start = Read-Host " "
+    $looping = $true
+    
+    while ($looping) {
+    
+        Write-Host "Enter Start time of range. For Example: 9:00AM 12/25/2000"
+        $start = Read-Host " "
+
+        Write-Host "Enter End time of Range"
+        $end = Read-Host " "
+
+        Write-Host "Is this correct: Start Time:$start End Time:$End
+        Write-Host "Press Y or N"
+
+        switch ($isCorrect){
+            "Y" {
+                $looping = $false; break;
+             }
+             "N" {
+                break;
+             }
+        }
+    }
+    
 }
