@@ -1,4 +1,21 @@
-# Cyber-Rambo
+# Cyber-Rambo [UNDER CONSTRUCTION]
+==============
+9/1/2018:
+o PSM1 file for all model-like functions created (Things like functions that get processes)
+o PSM1 file for all view-like functions created (Mainly menus and the presentation of things)
+
+
+
+9/8/2018:
+o Integrated all internal files together for modularity and readability.
+o Still need to work on the outputs of all three menu choices.
+
+Menu looks like this so far...
+CYBER RAMBO
+1. Analyze Host Based on Time Range
+2. Get a Baseline of Host
+3. View locations and commands of Common Prxocesses
+==============
 
 Intended to provide a blue-team/hunt-team with a way to parse through relevant information so that a timeline of malicious events is created.
 
