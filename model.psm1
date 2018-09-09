@@ -156,3 +156,7 @@ function baselineOfCriticalDirectories {
 function pathAndCommandLineOfProcesses {
     get-wmiobject win32_process | select processname, path, commandline | sort path
 }
+
+function haveLogsBeenCleared {
+    [bool](get-eventlog security | ? {$_.eventid -eq "1102"})
+}
