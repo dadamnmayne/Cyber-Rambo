@@ -160,3 +160,7 @@ function pathAndCommandLineOfProcesses {
 function haveLogsBeenCleared {
     [bool](get-eventlog security | ? {$_.eventid -eq "1102"})
 }
+
+function internetExplorerTypedUrls {
+    gci 'hkcu:\software\microsoft\internet explorer' | ? {$_.name -eq "HKEY_CURRENT_USER\software\microsoft\internet explorer\TypedURLs"}
+}
