@@ -168,8 +168,8 @@ function timeRangeLoggedInUsers {
 
     get-eventlog security | ? {
         $_.eventid -eq "4624 -and
-        $_.eventdate -gt $Global:start -and
-        $_.eventdate -ls $Global:end
+        $_.timegenerated -gt $Global:start -and
+        $_.timegenerated -lt $Global:end
     }
 
 }
