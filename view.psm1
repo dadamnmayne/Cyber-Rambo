@@ -16,15 +16,18 @@ function timeRangeMenu {
         Write-Host "Enter End time of Range"
         
         $Global:end = Read-Host " "
-        Write-Host "Is this correct: Start Time:$start End Time:$End"
+        Write-Host "Is this correct: Start Time:$Global:start End Time:$Global:end"
         Write-Host "Press Y or N"
 
         switch ($isCorrect){
             "Y" {
                 $looping = $false; break;
              }
-             "N" {
+            "N" {
                 break;
+             }
+             default {
+                Write-Host "No result. Try again"; break;
              }
         }
 
